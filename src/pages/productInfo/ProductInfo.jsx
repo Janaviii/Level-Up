@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { doc, getDoc, getDocs } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { addToCart } from '../../redux/cartSlice';
-import { fireDB } from '../../firebase/firebaseConfig';
+import { fireDB } from '../../firebase/FirebaseConfig';
 import Testimonial from '../../components/testimonial/Testimonial';
 
 function ProductInfo() {
