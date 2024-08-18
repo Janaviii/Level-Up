@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="styles.css">-->
+    <title>Beta Testing Platform</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#user-info {
+    align-items: center;
+}
+
+button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #444;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+select, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #f4f4f4;
+    margin: 20% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Beta Testing Platform</h1>
+        <div id="user-info">
+            <span id="user-name">Welcome, Guest</span>
+            <button id="login-btn">Login</button>
+            <button id="register-btn">Register</button>
+        </div>
+    </header>
+    <main>
+        <section id="games">
+            <h2>Available Games</h2>
+            <div id="game-list">
+                <!-- Game listings will be generated here dynamically using JavaScript -->
+            </div>
+        </section>
+        <section id="feedback">
+            <h2>Feedback Form</h2>
+            <form id="feedback-form">
+                <label for="game">Select a Game:</label>
+                <select id="game">
+                    <!-- Game options will be generated here dynamically using JavaScript -->
+                </select>
+                <label for="bug-description">Bug Description:</label>
+                <textarea id="bug-description" rows="4"></textarea>
+                <label for="feedback-comments">Feedback Comments:</label>
+                <textarea id="feedback-comments" rows="4"></textarea>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </section>
+    </main>
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form id="register-form">
+                <label for="new-username">Username:</label>
+                <input type="text" id="new-username" required>
+                <label for="new-password">Password:</label>
+                <input type="password" id="new-password" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBFqD7pZtK1a3sa3aihlcNXrrqtanEMWMw",
+          authDomain: "beta-b0e44.firebaseapp.com",
+          databaseURL: "https://beta-b0e44-default-rtdb.firebaseio.com",
+          projectId: "beta-b0e44",
+          storageBucket: "beta-b0e44.appspot.com",
+          messagingSenderId: "788327533053",
+          appId: "1:788327533053:web:7dff5895740606c59af194",
+          measurementId: "G-DWM71F1C6Y"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+<script src="jquey.js"></script>
+<script>
+    let todos = [];
+const renderTodos = function(){
+
+    dib.collection("todos").get().then(data => {
+        console.log(data);
+
+    });
+
+}
+renderTodos();
+
+  
+  // Sample data for available games
+const gamesData = [
+    { id: 1, name: "Game 1", description: "A thrilling action game." },
+    { id: 2, name: "Game 2", description: "An epic RPG adventure." },
+    { id: 3, name: "Game 3", description: "A strategic simulation game." },
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+    const userModal = document.getElementById("login-modal");
+    const registerModal = document.getElementById("register-modal");
+    const loginButton = document.getElementById("login-btn");
+    const registerButton = document.getElementById("register-btn");
+    const loginForm = document.getElementById("login-form");
+    const registerForm = document.getElementById("register-form");
+
+    loginButton.addEventListener("click", () => {
+        userModal.style.display = "block";
+    });
+
+    registerButton.addEventListener("click", () => {
+        registerModal.style.display = "block";
+    });
+
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // Handle user login (you can add authentication logic here)
+        console.log("User Login - Username: " + username + ", Password: " + password);
+        // Close the modal
+        userModal.style.display = "none";
+    });
+
+    registerForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const newUsername = document.getElementById("new-username").value;
+        const newPassword = document.getElementById("new-password").value;
+
+        // Handle user registration (you can add registration logic here)
+        console.log("User Registration - Username: " + newUsername + ", Password: " + newPassword);
+        // Close the modal
+        registerModal.style.display = "none";
+    });
+
+    const gameList = document.getElementById("game-list");
+    const gameSelect = document.getElementById("game");
+
+    // Populate the game list
+    gamesData.forEach((game) => {
+        const gameItem = document.createElement("div");
+        gameItem.classList.add("game-item");
+        gameItem.innerHTML = `<h3>${game.name}</h3>
+                              <p>${game.description}</p>`;
+        gameList.appendChild(gameItem);
+
+        const option = document.createElement("option");
+        option.value = game.id;
+        option.textContent = game.name;
+        gameSelect.appendChild(option);
+    });
+
+    // const feedbackForm = document.getElementById("feedback-form");
+
+    // feedbackForm.addEventListener("submit", (e) => {
+    //     e.preventDefault();
+    //     const selectedGame = gameSelect.value;
+    //     const bugDescription = document.getElementById("bug-description").value;
+    //     const feedbackComments = document.getElementById("feedback-comments").value;
+
+    //     // Handle feedback submission here
+    //     console.log("Game ID: " + selectedGame);
+    //     console.log("Bug Description: " + bugDescription);
+    //     console.log("Feedback Comments: " + feedbackComments);
+
+    //     // Reset the form fields
+    //     feedbackForm.reset();
+    // });
+
+    // Modal close buttons
+    const closeButtons = document.querySelectorAll(".close");
+    closeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            userModal.style.display = "none";
+            registerModal.style.display = "none";
+        });
+    });
+});
+
+</script>
+</body>
+</html>
