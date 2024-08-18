@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { addDoc, collection } from 'firebase/firestore';
-import { fireDB } from '../../firebase/firebaseConfig';
+import { fireDB } from '../../firebase/FirebaseConfig';
 
 
 function Cart() {
