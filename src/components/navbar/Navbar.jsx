@@ -61,7 +61,11 @@ function Navbar() {
                     <div class="h-1 w-15 bg-amber-600 rounded"></div>
                   </Link><br />
                   <Link to={'/allproducts'} className="text-sm font-medium text-white">
-                    All
+                    Allproducts
+                    <div class="h-1 w-15 bg-amber-600 rounded"></div>
+                  </Link>
+                   <Link to={'/login'} className="text-sm font-medium text-white"  >
+                    Login
                     <div class="h-1 w-15 bg-amber-600 rounded"></div>
                   </Link>
                   {user ?
@@ -143,6 +147,10 @@ function Navbar() {
 
                   <Link to={'/allproducts'} className="text-sm font-medium text-white "  >
                     All Products
+                    <div class="h-1 w-15 bg-amber-600 rounded"></div>
+                  </Link>
+                   <Link to={'/login'} className="text-sm font-medium text-white"  >
+                    Login
                     <div class="h-1 w-15 bg-amber-600 rounded"></div>
                   </Link>
                   {user ?
