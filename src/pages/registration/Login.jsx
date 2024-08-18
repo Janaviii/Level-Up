@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import myContext from '../../context/data/myContext'
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase/firebaseConfig';
+import { auth } from '../../firebase/FirebaseConfig';
 import { toast } from 'react-toastify';
 import Loader from '../../components/loader/Loader';
 import logo from '../../assets/logo_level_up.jpeg'
