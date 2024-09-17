@@ -76,7 +76,7 @@ function Cart() {
     var options = {
       key: "rzp_test_aob5xZhdVfBST1",// Enter the Key ID generated from the Dashboard
       key_secret: "i31cIbgB0XUYAnw4rJZQl4mn",
-      amount: parseInt(grandTotal * 100),
+      amount: parseInt(grandTotal * 1),
       currency: "INR",
       order_receipt: 'order_rcptid_' + name,
       name: "Level Up",
