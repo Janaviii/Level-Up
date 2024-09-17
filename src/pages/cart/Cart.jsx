@@ -34,7 +34,7 @@ function Cart() {
     console.log(temp)
   }, [cartItems])
 
-  const shipping = parseInt(100);
+  const shipping = parseInt(1);
   const grandTotal = shipping + totalAmount;
   // console.log(grandTotal);
   //Payment Intigration//
